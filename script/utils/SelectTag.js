@@ -1,8 +1,8 @@
 //ici faire une fonction que j'appelerai dans displayTag qui permettra de crée et afficher le bouton avec le tag concerner, mais il vas falloir aussi le trier avec le tableau recipes.
-import { tagsArray } from "../index.js";
+import { tagsObject } from "../index.js";
 import { recipes } from "../../data/recipes.js";
 import refresh from "./refresh.js";
-import { searchByTags, searchByTagsV2 } from "../algorithme1/searchByTag.js";
+import { searchByTags } from "../algorithme1/searchByTag.js";
 
 export function selectTag(oneTag){
     const divTagSelect = document.querySelector('.tagSelect');
@@ -18,18 +18,16 @@ export function selectTag(oneTag){
 
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
-        // const newSearching = searchByTagsV2(tagsArray, recipes)
+        // const newSearching = searchByTagsV2(tagsObject, recipes)
         // refresh(newSearching)
         // La boucle for et la pour essayé la methode dites du mentor.
-        for (let i = 0; i < tagsArray.length; i++) {
-            const element = tagsArray[i];
-            if(element === tagTitle.textContent){
-                tagsArray.splice(i, 1)
-                console.log(tagsArray);
-                const newSearching = searchByTagsV2(tagsArray, recipes)
-                refresh(newSearching)
-            }
-        }
+        // for (let i = 0; i < tagsObject.ingredients.length; i++) {
+        //     const element = tagsObject[i];
+        //     if(element === tagTitle.textContent){
+        //         tagsObject.ingredients.splice(i, 1)
+        //         console.log(tagsObject.ingredients);
+        //     }
+        // }
     })
 
 
@@ -54,11 +52,11 @@ export function selectAppareil(oneTag){
 
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
-        for (let i = 0; i < tagsArray.length; i++) {
-            const element = tagsArray[i];
+        for (let i = 0; i < tagsObject.length; i++) {
+            const element = tagsObject[i];
             if(element === tagTitle.textContent){
-                tagsArray.splice(i, 1)
-                console.log(tagsArray);
+                tagsObject.splice(i, 1)
+                console.log(tagsObject);
             }
             
         }
@@ -84,11 +82,11 @@ export function selectUstens(oneTag){
 
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
-        for (let i = 0; i < tagsArray.length; i++) {
-            const element = tagsArray[i];
+        for (let i = 0; i < tagsObject.length; i++) {
+            const element = tagsObject[i];
             if(element === tagTitle.textContent){
-                tagsArray.splice(i, 1)
-                console.log(tagsArray);
+                tagsObject.splice(i, 1)
+                console.log(tagsObject);
             }
             
         }

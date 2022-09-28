@@ -3,16 +3,16 @@
 // import cleanHtml from "../utils/cleanHtml.js";
 
 
-export function searchByTags(tagSelected, recipes){
-    // mettre en place la fonction.
+// export function searchByTags(tagSelected, recipes){
+//     // mettre en place la fonction.
     
-    const tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(tagSelected)));
+//     const tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(tagSelected)));
 
-    // cleanHtml();
+//     // cleanHtml();
 
-    return tagFiltre;
+//     return tagFiltre;
 
-}
+// }
 export function searchByTagAppareil(tagSelected, recipes){
     // mettre en place la fonction
     const tagFiltre = recipes.filter((recipe)=> recipe.appliance.toLowerCase().includes(tagSelected));
@@ -30,61 +30,30 @@ export function searchByTagUstens(tagSelected, recipes){
     return tagFiltre;
 }
 
-
-
-
-
-
-// il faut que je rassemble c'est 3 fonctions , dans une seule..... OUIN
 export function searchByTagsV2(tagSelected, recipes){
-    // const ingredient= document.querySelectorAll('.tagShowUpIngredient')
-    // const appareil = document.querySelectorAll('.tagShowUpAppareil')
-    // const ustens = document.querySelectorAll('.tagShowUpUstens')
-    // const divTag = document.querySelector('.tagSelect')
-    // console.log(ingredient, appareil, ustens);
+    let selectedRecipes= [];
+
+    const ingredientsFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(tagSelected.ingredients)));
+    console.log(ingredientsFiltre);
     
-    // if (divTag.includes(ingredient)) {
-    //      recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(tagSelected)))
-    // }
-    // else if(divTag.childNodes.includes(appareil)){
-    //     recipes.filter((recipe)=> recipe.appliance.toLowerCase().includes(tagSelected))
-    // }
-    // else if(divTag.childNodes.includes(ustens)){
-    //     recipes.filter((recipe)=> recipe.ustensils.some((ustens)=> ustens.toLowerCase().includes(tagSelected)))
-    // }
-
-  
-    // const tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(tagSelected))|| recipes.filter((recipe)=> recipe.appliance.toLowerCase().includes(tagSelected)) ||recipes.filter((recipe)=> recipe.ustensils.some((ustens)=> ustens.toLowerCase().includes(tagSelected))))
+    const applianceFiltre = recipes.filter((recipe)=> recipe.appliance.toLowerCase().includes(tagSelected));
     
-    // const tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> tagSelected.includes(ing.ingredient.toLowerCase())));
-    // console.log(tagFiltre);
-    // console.log(tagSelected);
-    // if(tagSelected.length = 0){
-    //     return recipes
-    // }
-    // return tagFiltre
-
-
-
-
-    // je vais tenter avec une boucle... je cabre
+    const ustensilsFiltre = recipes.filter((recipe)=> recipe.ustensils.some((ustens)=> ustens.toLowerCase().includes(tagSelected)));
     
-    const oneTag = tagSelected.forEach(element => {
-        console.log(element);
-        
-        return element
-        // console.log(tagFiltre);
-        // tagFiltre.forEach(tag =>{
-            //     console.log(tag);
-            //     return tag
-            // })
-    });
-    const tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(oneTag)))
-    console.log(tagFiltre);
-    // ici j'ai essayer de regroupé les 3 fonctions dans une seule.. echec.
+    selectedRecipes = [
+        ...ingredientsFiltre,
+        ...applianceFiltre,
+        ...ustensilsFiltre,
+    ];
+    console.log(tagSelected.ingredients);
+    return selectedRecipes;
+
 }
-export function searchByTagV3(tagArray, recipes){
-    searchByTags(tagArray, recipes)
-    searchByTagAppareil(tagArray, recipes)
-    searchByTagUstens(tagArray, recipes)
+
+
+export function searchByTags(tagsObject, recipes){
+    const result = searchByTagsV2(tagsObject, recipes)
+    console.log('resulat:',result);
+    return result
 }
+

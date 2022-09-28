@@ -1,5 +1,5 @@
 // import { recipes } from "../../data/recipes.js";
-// import { tagsArray } from "../index.js";
+// import { tagsObject } from "../index.js";
 
 // ici faire la fonction d'ouverture du bouton ingrédient, et l'appeler sur l'add event listener situé sur la page index. 
 export function openIngredient(){

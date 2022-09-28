@@ -1,9 +1,8 @@
 import {btnTriIngredient, btnTriAppareil, btnTriUstens} from "../factories/tagContainer.js";
 import {selectTag, selectAppareil, selectUstens} from "./SelectTag.js";
-import {searchByTagAppareil, searchByTags, searchByTagUstens, searchByTagsV2, searchByTagV3} from "../algorithme1/searchByTag.js";
-import displayRecipe from "./displayRecipe.js";
+import {searchByTagAppareil, searchByTags, searchByTagUstens} from "../algorithme1/searchByTag.js";
 import refresh from "./refresh.js";
-import { tagsArray } from "../index.js";
+import { tagsObject } from "../index.js";
 // ici je met en place des fonctions, qui vont elle même appeler les fonctions contenant les tableaux, qui eux meme contienne les ingredient, ustensiles ou appareil, et ensuite je les fais s'afficher dans le DOM
 
 export  function displayTag(recipes){
@@ -18,22 +17,15 @@ export  function displayTag(recipes){
         li.addEventListener('click', ()=>{ 
             selectTag(oneIngredient);
             // const newSearchTag = searchByTags(oneIngredient, recipes)
-
-
-            tagsArray.push(oneIngredient);
-            const newSearchTag = searchByTagsV2(tagsArray, recipes)
-            // const newSearchTag = searchByTagV3(tagsArray, recipes)
+            tagsObject.ingredients.push(oneIngredient)
             
-            // console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsArray);
+            let newSearchTag = searchByTags(tagsObject, recipes)
+            
+            // console.log(tagsObject, 'recipes:', recipes);
             console.log(newSearchTag);
-
-            
         
             refresh(newSearchTag)
-            // displayRecipe(newSearchTag)
-            // displayTag(newSearchTag)
-            // displayTagAppareil(newSearchTag)
-            // displayTagUstens(newSearchTag)
+          
         })
 
 
@@ -53,8 +45,8 @@ export function displayTagAppareil(recipes){
 
         li.addEventListener('click', ()=>{
             selectAppareil(oneAppareil);
-            tagsArray.push(oneAppareil);
-            console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsArray);
+            tagsObject.appareil.push(oneAppareil);
+            console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsObject);
             const newSearchTag = searchByTagAppareil(oneAppareil, recipes);
 
             refresh(newSearchTag)
@@ -79,8 +71,8 @@ export function displayTagUstens(recipes){
 
         li.addEventListener('click', ()=>{
             selectUstens(oneUstens);
-            tagsArray.push(oneUstens);
-            console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsArray);
+            // tagsObject.push(oneUstens);
+            console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsObject);
             const newSearchTag = searchByTagUstens(oneUstens, recipes);
 
             refresh(newSearchTag)
