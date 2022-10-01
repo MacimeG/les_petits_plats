@@ -19,7 +19,7 @@ export  function displayTag(recipes){
             // const newSearchTag = searchByTags(oneIngredient, recipes)
             tagsObject.ingredients.push(oneIngredient)
             
-            let newSearchTag = searchByTags(tagsObject, recipes)
+            const newSearchTag = searchByTags(tagsObject, recipes)
             
             // console.log(tagsObject, 'recipes:', recipes);
             console.log(newSearchTag);
@@ -71,7 +71,7 @@ export function displayTagUstens(recipes){
 
         li.addEventListener('click', ()=>{
             selectUstens(oneUstens);
-            // tagsObject.push(oneUstens);
+            tagsObject.ustensils.push(oneUstens);
             console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsObject);
             const newSearchTag = searchByTagUstens(oneUstens, recipes);
 
