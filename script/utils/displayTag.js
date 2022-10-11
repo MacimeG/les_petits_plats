@@ -10,25 +10,28 @@ export  function displayTag(recipes){
     const ul = document.querySelector('.ingredient');
     tag.map(oneIngredient =>{
         const li = document.createElement('li');
-        li.className="ingredient_item hidden";
+        li.className="ingredient_item ";
         li.textContent = oneIngredient;
-
-        // ici je vais mettre en place l'écouteur d'évenement qui va me permettre de géré l'affichage des tags.
-        li.addEventListener('click', ()=>{ 
-            selectTag(oneIngredient);
-            // const newSearchTag = searchByTags(oneIngredient, recipes)
-            tagsObject.ingredients.push(oneIngredient)
-            
-            const newSearchTag = searchByTags(tagsObject, recipes)
-            
-            // console.log(tagsObject, 'recipes:', recipes);
-            console.log(newSearchTag);
         
-            refresh(newSearchTag)
-          
+        // ici je vais mettre en place l'écouteur d'évenement qui va me permettre de géré l'affichage des tags.
+        li.addEventListener('click', (e)=>{ 
+            selectTag(oneIngredient);
+            tagsObject.ingredients.push(oneIngredient)
+
+            for(let i = 0; i< tagsObject.ingredients.length; i++){
+                let element = tagsObject.ingredients[i]
+               
+                const newSearchTag = searchByTags(element, recipes)
+                 e.target.classList.remove('ingredient_item')
+                e.target.classList.add('none')
+                console.log(e.target);
+                refresh(newSearchTag)
+             
+            }
+           
         })
 
-
+        
 
         ul.appendChild(li);
     })
@@ -43,16 +46,26 @@ export function displayTagAppareil(recipes){
         li.className="appareil_item";
         li.textContent= oneAppareil;
 
-        li.addEventListener('click', ()=>{
+        li.addEventListener('click', (e)=>{
             selectAppareil(oneAppareil);
             tagsObject.appareil.push(oneAppareil);
-            console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsObject);
-            const newSearchTag = searchByTagAppareil(oneAppareil, recipes);
+            for(let i = 0; i< tagsObject.appareil.length; i++){
+                let element = tagsObject.appareil[i]
+                console.log("element:",element);
+                const newSearchTag = searchByTagAppareil(element, recipes)
+                console.log("newSearchTag:",newSearchTag);
+                console.log("etarget:", e.target);
+               
+                // e.target.value.remove()
+                // newSearchTag.remove(e.target.value)
+                refresh(newSearchTag)
+            }
+            console.log(tagsObject);
+            // const newSearchTag = searchByTags(tagsObject, recipes);
+          
 
-            refresh(newSearchTag)
-            // displayRecipe(newSearchTag);
-            // displayTag(newSearchTag);
-            // displayTagUstens(newSearchTag);
+            // refresh(newSearchTag)
+        
         })
 
         ulAppareil.appendChild(li);
@@ -69,16 +82,26 @@ export function displayTagUstens(recipes){
         li.textContent= oneUstens;
 
 
-        li.addEventListener('click', ()=>{
+        li.addEventListener('click', (e)=>{
             selectUstens(oneUstens);
             tagsObject.ustensils.push(oneUstens);
-            console.log("log pour voir ce qui a été ajouté dans le tableau :",tagsObject);
-            const newSearchTag = searchByTagUstens(oneUstens, recipes);
+            for(let i = 0; i< tagsObject.ustensils.length; i++){
+                let element = tagsObject.ustensils[i]
+                console.log("element:",element);
+                const newSearchTag = searchByTagUstens(element, recipes)
+                console.log("newSearchTag:",newSearchTag);
+                console.log("etarget:", e.target);
+                // e.target.classList.remove('ingredient_item')
+                // e.target.classList.add('none')
+                // e.target.value.remove()
+                // newSearchTag.remove(e.target.value)
+                refresh(newSearchTag)
+            }
+            console.log(tagsObject);
+            // const newSearchTag = searchByTags(tagsObject, recipes);
+            // const newSearchTag = searchByTagUstens(oneUstens, recipes);
 
-            refresh(newSearchTag)
-            // displayRecipe(newSearchTag)
-            // displayTag(newSearchTag)
-            // displayTagAppareil(newSearchTag)
+            // refresh(newSearchTag)
             
         })
 

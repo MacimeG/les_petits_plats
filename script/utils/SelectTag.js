@@ -2,7 +2,7 @@
 import { tagsObject } from "../index.js";
 import { recipes } from "../../data/recipes.js";
 import refresh from "./refresh.js";
-import { searchByTags } from "../algorithme1/searchByTag.js";
+import { searchByTagAppareil, searchByTags, searchByTagUstens } from "../algorithme1/searchByTag.js";
 
 export function selectTag(oneTag){
     const divTagSelect = document.querySelector('.tagSelect');
@@ -18,16 +18,23 @@ export function selectTag(oneTag){
 
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
-        // const newSearching = searchByTagsV2(tagsObject, recipes)
+        // const newSearching = searchByTags(oneTag, recipes)
         // refresh(newSearching)
+
+        
         // La boucle for et la pour essayé la methode dites du mentor.
-        // for (let i = 0; i < tagsObject.ingredients.length; i++) {
-        //     const element = tagsObject[i];
-        //     if(element === tagTitle.textContent){
-        //         tagsObject.ingredients.splice(i, 1)
-        //         console.log(tagsObject.ingredients);
-        //     }
-        // }
+        for (let i = 0; i < tagsObject.ingredients.length; i++) {
+            const element = tagsObject.ingredients[i];
+            console.log("element:",element);
+            if(element === tagTitle.textContent){
+                tagsObject.ingredients.splice(i, 1)
+                 const newSearching = searchByTags(tagsObject.ingredients, recipes)
+                refresh(newSearching)
+                console.log("newSearching:",newSearching);
+            }
+        }
+        console.log(tagsObject);
+        // console.log(tagsObject);
     })
 
 
@@ -52,11 +59,14 @@ export function selectAppareil(oneTag){
 
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
-        for (let i = 0; i < tagsObject.length; i++) {
-            const element = tagsObject[i];
+        for (let i = 0; i < tagsObject.appareil.length; i++) {
+            const element = tagsObject.appareil[i];
             if(element === tagTitle.textContent){
-                tagsObject.splice(i, 1)
+                tagsObject.appareil.splice(i, 1)
                 console.log(tagsObject);
+                const newSearching = searchByTagAppareil(tagsObject.appareil, recipes)
+                refresh(newSearching)
+                console.log("newSearching:",newSearching);
             }
             
         }
@@ -82,14 +92,17 @@ export function selectUstens(oneTag){
 
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
-        for (let i = 0; i < tagsObject.length; i++) {
-            const element = tagsObject[i];
+        for (let i = 0; i < tagsObject.ustensils.length; i++) {
+            const element = tagsObject.ustensils[i];
             if(element === tagTitle.textContent){
-                tagsObject.splice(i, 1)
-                console.log(tagsObject);
+                tagsObject.ustensils.splice(i, 1)
+                const newSearching = searchByTagUstens(tagsObject.ustensils, recipes)
+                refresh(newSearching)
+                console.log("newSearching:",newSearching);
             }
             
         }
+        console.log(tagsObject);
     })
 
     tagAfficher.appendChild(tagTitle);

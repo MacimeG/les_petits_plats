@@ -1,6 +1,3 @@
-// import { recipes } from "../../data/recipes.js";
-// import { tagsObject } from "../index.js";
-
 // ici faire la fonction d'ouverture du bouton ingrédient, et l'appeler sur l'add event listener situé sur la page index. 
 export function openIngredient(){
     //ici je récupere les elements dont j'ai besoin.
@@ -18,11 +15,11 @@ export function openIngredient(){
 export function openAppareil(){
     const ul = document.querySelector('.appareil')
     const btn = document.querySelector('.search_appareil');
-    // const iconApp = document.querySelector('.btnIcon');
+    const iconApp = document.querySelector('.btnIconAppareil');
 
     ul.classList.toggle('ulAppareilOpen');
     btn.classList.toggle('appareilOpen')
-    // iconApp.classList.toggle('appareil_icon')
+    iconApp.classList.toggle('appareil_icon')
 }
 
 //ici pareil mais pour l'ouverture du bouton ustens
@@ -30,12 +27,20 @@ export function openAppareil(){
 export function openUstens(){
     const ul = document.querySelector('.ustens');
     const btn = document.querySelector('.search_ustensiles');
-    // const icon = document.querySelector('.btnIcon');
+    const icon = document.querySelector('.btnIconUstens');
 
     ul.classList.toggle('ustensOpen')
     btn.classList.toggle('ustensiles_open')
-    // icon.classList.toggle('iconUstensOpen')
+    icon.classList.toggle('iconUstensOpen')
 }
 
-
-// PAS FINIS !!! GERER CORRECTEMENT L'AFFICHAGE DE L'ICON, ici je peut, peut etre rajouté la page SelectTag, qui sert a l'affichage des petit boutons quand on choisis un tags.
+export function searchInList(input, item){
+    item.forEach(li => {
+        if (!li.textContent.toLowerCase().includes(input)) {
+            li.style.display="none"
+        }
+        else{
+            li.style.display="list-item"
+        }
+    });
+}

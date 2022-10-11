@@ -108,10 +108,7 @@ img{
     grid-template-columns: repeat(3, 1fr);
     overflow: scroll;
 }
-.iconUstensOpen{
-    bottom: 0px;
-    transform: rotate(180deg);
-}
+
 .ustens_item{
     color: white;
     font-size: 18px;
@@ -138,9 +135,26 @@ img{
     left: 139px;
     bottom: 46px;
 }
+.btnIconAppareil{
+    position: relative;
+    color: white;
+    left: 139px;
+    bottom: 46px;
+}
+.btnIconUstens{
+    position: relative;
+    color: white;
+    left: 139px;
+    bottom: 46px;
+}
 /* ici c'est pour mettre en place le toggle, sur l'icon de la fleche. */
 .appareil_icon{
     bottom: 0px;
+    transform: rotate(180deg);
+}
+.iconUstensOpen{
+    bottom: 0px;
+    transform: rotate(180deg);
 }
 /* ici c'est pour mettre en place le toggle */
 .ing{
@@ -203,6 +217,7 @@ img{
     margin-top: 10px;
     cursor: pointer;
 }
+
 .title_recette{
     font-size: 18px;
     font-weight: normal;
@@ -283,4 +298,7 @@ img{
 .tagShowUpUstens p {
     margin: 0px;
     color: white;
+}
+.none{
+    color: transparent;
 }

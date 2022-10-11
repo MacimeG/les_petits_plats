@@ -1,6 +1,6 @@
 // ici en premier j'importe donc le fichier contenant toute les recettes.
 import { recipes } from "../data/recipes.js";
-import {openIngredient, openAppareil, openUstens} from "./utils/event.js";
+import {openIngredient, openAppareil, openUstens, searchInList} from "./utils/event.js";
 import searchRecipe from "./algorithme1/algo.js";
 import refresh from "./utils/refresh.js"
 
@@ -40,4 +40,25 @@ input.addEventListener('keyup', (e)=>{
     else{
         refresh(recipes)
     }
+})
+// ici je met en place les ecouteur d'évenement qui dans la barre de recherches des ingredients appareil etc.. vas sortir les bons tags quand l'user cherche coco par exemple.
+const inputIngredient = document.querySelector('.ingredient_btn')
+const ingredientItem = document.querySelectorAll('.ingredient_item')
+
+const inputAppareil = document.querySelector('.appareil_btn')
+const appareilItem= document.querySelectorAll('.appareil_item')
+
+const inputUstens = document.querySelector('.ustens_btn')
+const ustensItem = document.querySelectorAll('.ustens_item')
+
+inputIngredient.addEventListener('keyup',(e)=>{
+    searchInList(e.target.value, ingredientItem)
+})
+
+inputAppareil.addEventListener('keyup',(e)=>{
+    searchInList(e.target.value, appareilItem)
+})
+
+inputUstens.addEventListener('keyup', (e)=>{
+    searchInList(e.target.value, ustensItem)
 })
