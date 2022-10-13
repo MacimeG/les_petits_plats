@@ -7,5 +7,6 @@ export default function refresh(recipes){
     displayTag(recipes)
     displayTagAppareil(recipes)
     displayTagUstens(recipes)
+    console.log("dans la fonction refresh:",recipes);
 
 }
