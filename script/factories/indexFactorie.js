@@ -31,10 +31,30 @@ export default function factoryRecipe(recipes){
 
 
         // ici je vais mettre en place une boucle foreach pour pouvoir récupéré les ingredients, et les faires affichers dans mes cards. (voir si je peux mettre cette boucle foreach dans une fonction apar et si je peux la rappeler dans cette fonction la / cardRecipe.)
-        ingredients.forEach(ingredient => {
+        // faire la meme chose avec une boucle for pour la v2, NE SURTOUT PAS SUPPRIMER CELLE CI !!!!!!!!
+        // ingredients.forEach(ingredient => {
+        //     const li = document.createElement('li');
+        //     const b = document.createElement('b');
+        //     b.textContent= `${ingredient.ingredient}`;
+        //     li.appendChild(b);
+        //     ul.appendChild(li);
+        //     // mettre en place une condition pour verifier si les quantiter et les unité sont vides ou undefini.
+        //     if(ingredient.quantity !== null && ingredient.quantity !== undefined){
+        //         const span = document.createElement('span');
+        //         span.textContent = `: ${ingredient.quantity}`;
+        //         if(ingredient.unit !== null && ingredient.unit !== undefined){
+        //             span.textContent= `: ${ingredient.quantity} ${ingredient.unit}`
+        //         }
+        //         li.appendChild(span);
+        //     }
+        // });
+
+        // ici la v2
+        for (let i = 0; i < ingredients.length; i++) {
+            const ingredient = ingredients[i];
             const li = document.createElement('li');
             const b = document.createElement('b');
-            b.textContent= `${ingredient.ingredient}`;
+            b.textContent= ingredient.ingredient;
             li.appendChild(b);
             ul.appendChild(li);
             // mettre en place une condition pour verifier si les quantiter et les unité sont vides ou undefini.
@@ -46,7 +66,8 @@ export default function factoryRecipe(recipes){
                 }
                 li.appendChild(span);
             }
-        });
+            
+        }
 
         article.appendChild(pictureCard);
         article.appendChild(card_alldetail);

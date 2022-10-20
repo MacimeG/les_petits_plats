@@ -34,6 +34,7 @@ input.addEventListener('keyup', (e)=>{
     // mettre condition pour commencer la recherche a partir de 3 lettres entrées.
     if(e.target.value.length > 2){
         const newRecipe = searchRecipe(e.target.value, recipes)
+        // console.log(newRecipe);
         // searchRecipe(e.target.value, recipes)
         refresh(newRecipe)
     }
