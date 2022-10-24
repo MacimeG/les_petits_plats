@@ -79,12 +79,14 @@ export function displayTag(recipes) {
    li.addEventListener('click',(e)=>{
       selectTag(element)
       tagsObject.ingredients.push(element);
-      tag.splice(i, 1)
-      console.log(tag);
-      for (let i = 0; i < tagsObject.ingredients.length; i++) {
-        let ingredient = tagsObject.ingredients[i];
+      
+      
+     
+      for (let j = 0; j < tagsObject.ingredients.length; j++) {
+        let ingredient = tagsObject.ingredients[j];
         // console.log(ingredient);
         const newSearchTag = searchByTags(ingredient, recipes);
+        tag.splice(i, 1)
         refresh(newSearchTag)
       }
    })
