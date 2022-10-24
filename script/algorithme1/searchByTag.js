@@ -6,7 +6,7 @@
 export function searchByTags(tagSelected, recipes){
     // mettre en place la fonction.
     
-    let tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.toLowerCase().includes(tagSelected)));
+    let tagFiltre = recipes.filter((recipe)=> recipe.ingredients.some((ing)=> ing.ingredient.includes(tagSelected)));
     // tagFiltre = recipes.filter(tag => !tagFiltre.includes(tag))
     
     return tagFiltre;

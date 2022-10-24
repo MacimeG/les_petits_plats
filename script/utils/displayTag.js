@@ -68,7 +68,7 @@ import { tagsObject } from "../index.js";
 //ici la v2
 export function displayTag(recipes) {
   const tag = btnTriIngredient(recipes);
-  // console.log(tag);
+  console.log(tag);
   const ul = document.querySelector(".ingredient");
   for (let i = 0; i < tag.length; i++) {
     const li = document.createElement('li');
@@ -76,7 +76,18 @@ export function displayTag(recipes) {
     li.className="ingredient_item"
     li.textContent=element
     // console.log(element);
-    
+   li.addEventListener('click',(e)=>{
+      selectTag(element)
+      tagsObject.ingredients.push(element);
+      tag.splice(i, 1)
+      console.log(tag);
+      for (let i = 0; i < tagsObject.ingredients.length; i++) {
+        let ingredient = tagsObject.ingredients[i];
+        // console.log(ingredient);
+        const newSearchTag = searchByTags(ingredient, recipes);
+        refresh(newSearchTag)
+      }
+   })
     ul.appendChild(li)
   }
   return
@@ -128,7 +139,9 @@ export function displayTag(recipes) {
       li.className="appareil_item"
       li.textContent= element
       // console.log(element);
-      
+      li.addEventListener('click',(e)=>{
+        selectAppareil(element)
+     })
       ul.appendChild(li)
     }
     return
@@ -181,7 +194,9 @@ export function displayTagUstens(recipes){
     li.className="ustens_item"
     li.textContent= element
     // console.log(element);
-    
+    li.addEventListener('click',(e)=>{
+      selectUstens(element)
+   })
     ul.appendChild(li)
   }
   return

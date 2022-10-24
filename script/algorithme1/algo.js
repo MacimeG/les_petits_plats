@@ -24,47 +24,22 @@ import cleanHtml from "../utils/cleanHtml.js";
 // ici la v2
 export default function searchRecipe(lettre, recipes){
     const result = []
-
+   
+    // console.log(recipes);
     // ici commencé la v2 de l'algorithme, avec uniquement des boucles for.
     for (let i = 0; i < recipes.length; i++) {
   
-        const element = recipes[i].ingredients
-        console.log("element:",element);
-        const elementName = recipes[i].name;
-        const elementDescription = recipes[i].description
-        for (let j = 0; j < element.length; j++) {
-            const ingredients = element[j];
-            console.log(ingredients);
-            if (ingredients.ingredient.toLowerCase().includes(lettre)) {
-                    result.push(recipes[i])
+        const element = recipes[i]
+    
+        for (let j = 0; j < element.ingredients.length; j++) {
+            const ingredient = element.ingredients[j];
+       
+            if(element.name.toLowerCase().includes(lettre) || element.description.toLowerCase().includes(lettre) || ingredient.ingredient.toLowerCase().includes(lettre)){
+                result.push(recipes[i])
             }
         }
-        if (elementName.toLowerCase().includes(lettre) || elementDescription.toLowerCase().includes(lettre)) {
-            result.push(recipes[i])
-        }
-        // for (let j = 0; j < element.length; j++) {
-        //     const ingredient = element[j];
-        //     console.log(ingredient.ingredient);
-        //     if (ingredient.ingredient.toLowerCase().includes(lettre)) {
-        //         result.push(recipes[i])
-        //     }
-        // }
-       
-            
-    
-       
-       
-        // if (elementName.toLowerCase().includes(lettre) || elementDescription.toLowerCase().includes(lettre)) {
-        //     // console.log("element[j]:",element[j]);
-        //     result.push(recipes[i]) 
-        //     console.log(recipes[i]);
-        // }
-
-
-      
-    
-        
     }
-    console.log(result);
-    return result
+    const newSet = [... new Set(result)]
+
+    return newSet
 }

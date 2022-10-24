@@ -15,7 +15,6 @@ export function selectTag(oneTag){
     iconClose.className="iconCloseTag fa-regular fa-circle-xmark"
     tagAfficher.className="tagShowUpIngredient"
 
-
     iconClose.addEventListener('click', ()=>{
         removeTag(tagAfficher);
         // const newSearching = searchByTags(oneTag, recipes)
@@ -28,12 +27,13 @@ export function selectTag(oneTag){
             console.log("element:",element);
             if(element === tagTitle.textContent){
                 tagsObject.ingredients.splice(i, 1)
-                 const newSearching = searchByTags(tagsObject.ingredients, recipes)
+                console.log(tagsObject);
+                
+                 const newSearching = searchByTags(element, recipes)
                 refresh(newSearching)
                 console.log("newSearching:",newSearching);
             }
         }
-        console.log(tagsObject);
         // console.log(tagsObject);
     })
 

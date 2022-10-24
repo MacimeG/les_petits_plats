@@ -37,7 +37,7 @@ export function btnTriIngredient(recipes){
             // console.log(ingredient.ingredient);
             allIngredient.push(ingredient.ingredient)
             // console.log(allIngredient);
-          
+           
         }
         
     }
