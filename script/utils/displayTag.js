@@ -80,16 +80,16 @@ export function displayTag(recipes) {
       selectTag(element)
       tagsObject.ingredients.push(element);
       
-      
-     
+   
       for (let j = 0; j < tagsObject.ingredients.length; j++) {
         let ingredient = tagsObject.ingredients[j];
         // console.log(ingredient);
         const newSearchTag = searchByTags(ingredient, recipes);
-        tag.splice(i, 1)
+        // tag.splice(i, 1)
+        console.log(tag);
         refresh(newSearchTag)
       }
-   })
+    })
     ul.appendChild(li)
   }
   return
