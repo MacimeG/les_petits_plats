@@ -28,7 +28,7 @@ export function displayTag(recipes) {
       tagsObject.ingredients.push(oneIngredient);
       console.log(recipes);
      
-      
+      li.remove()
 
       recipes = recipes.filter((recipe) =>
         recipe.ingredients.filter((ing) =>
@@ -43,19 +43,20 @@ export function displayTag(recipes) {
         let element = tagsObject.ingredients[i];
 
         const newSearchTag = searchByTags(element, recipes);
-        // if (tagsObject >= 0 || !tagsObject.ingredients.includes(element)) {
-        //     newSearchTag= newSearchTag.remove(element)
-        // }
-        newSearchTag.filter((recipe)=>{
-            recipe.ingredients.filter((ingredient)=>{
-                console.log("ingredient newSearchTag:",ingredient.ingredient === oneIngredient);
-            })
-        })
-        console.log("newSearchTag:",newSearchTag);
-     
-        console.log("tag apres la ligne:",tag);
-     
-       
+         // ici je fais un .map sur le resultat de la recherche pour récupéré les ingredients
+         newSearchTag.map((ingredients) =>
+           ingredients.ingredients.forEach((element) => {
+             // je push les ingredients dans mon tableau vide
+             tag.push(element.ingredient);
+           })
+         );
+        tag.filter(
+          (ingr) => !tagsObject.ingredients.includes(ingr)
+        );
+         // je fais un newSet de mon tableau pour enelever les doublons.
+         tag = [...new Set(tag)];
+         tag.sort();
+    
         refresh(newSearchTag);
       }
     });
